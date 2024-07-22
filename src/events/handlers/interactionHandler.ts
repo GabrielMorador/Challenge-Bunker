@@ -1,4 +1,5 @@
-const handleInteraction = (interaction: any): void => {
+import { Interaction } from '../../interfaces/interactionInterface';
+const handleInteraction = (interaction: Interaction): void => {
   console.log('Handling interaction:', interaction);
   // Aquí puedes implementar la lógica de procesamiento, como actualizar el presupuesto de la campaña
   updateCampaignBudget(interaction.campaignId);

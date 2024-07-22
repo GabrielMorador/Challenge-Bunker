@@ -1,6 +1,7 @@
 import amqp, { Connection, Channel } from 'amqplib/callback_api';
+import { Interaction } from '../../interfaces/interactionInterface';
 
-const emitInteractionEvent = (interaction: any): void => {
+const emitInteractionEvent = (interaction: Interaction): void => {
   amqp.connect(
     'amqp://rabbitmq',
     (error0: Error | null, connection: Connection) => {

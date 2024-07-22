@@ -2,7 +2,6 @@ import express from 'express';
 import campaignRoutes from './routes/campaignRoutes';
 import interactionRoutes from './routes/interactionRoutes';
 import { errorHandler } from './middleware/errorHandler';
-//import errorHandler from './middlewares/errorHandler';
 
 const app = express();
 

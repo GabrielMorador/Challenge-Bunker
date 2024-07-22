@@ -11,20 +11,20 @@ export const createInteraction = async (
   try {
     const interactionData: Interaction = req.body;
 
-    // Llama al servicio para crear la interacción
+    // call service
     const interaction =
       await InteractionService.createInteraction(interactionData);
 
-    // Emitir evento de interacción
+    // emit an interaction
     emitInteractionEvent(interactionData);
 
-    // Responde con la interacción creada
+    // response
     res.status(201).json({
       message: 'Interaction was created successfully',
       data: interaction,
     });
   } catch (error) {
-    // Pasa el error al siguiente middleware de manejo de errores
+    // send error to midleware
     next(error);
   }
 };

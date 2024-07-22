@@ -16,9 +16,9 @@ class CampaignRepository {
     if (active) {
       campaigns = await prisma.campaigns.findMany({
         where: {
-          deletedAt: null, // Filtrar solo campañas que no han sido eliminadas
-          startDate: { lte: new Date() }, // Filtrar campañas que hayan iniciado
-          endDate: { gte: new Date() }, // Filtrar campañas que aún no han finalizado
+          deletedAt: null, // only active
+          startDate: { lte: new Date() }, // campaigns that  have started
+          endDate: { gte: new Date() }, // campaigns that  have not yet ended
         },
       });
     } else {

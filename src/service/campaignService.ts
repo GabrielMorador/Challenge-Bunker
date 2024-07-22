@@ -47,7 +47,7 @@ class CampaignService {
   }
 
   private validateCampaign(data: Campaign): void {
-    // Verificar que todos los campos requeridos estén presentes
+    // validate field required
     if (!data.name) {
       throw new ValidationError("Validation failed: 'name' is required.");
     }
@@ -61,7 +61,7 @@ class CampaignService {
       throw new ValidationError("Validation failed: 'budget' is required.");
     }
 
-    // Validar las fechas
+    // validate date
     const startDate = new Date(data.startDate);
     const endDate = new Date(data.endDate);
     if (isNaN(startDate.getTime())) {
@@ -75,7 +75,7 @@ class CampaignService {
       );
     }
 
-    // Asegurarse de que el presupuesto sea un número positivo
+    // validate amount
     if (typeof data.budget !== 'number' || data.budget <= 0) {
       throw new ValidationError(
         "Validation failed: 'budget' must be a positive number.",

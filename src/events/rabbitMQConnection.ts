@@ -24,7 +24,7 @@ export function connectRabbitMQ(): void {
           (msg) => {
             if (msg) {
               console.log(`Received: ${msg.content.toString()}`);
-              // Procesar el mensaje
+              // proccess message
               handleInteraction(JSON.parse(msg.content.toString()));
             }
           },

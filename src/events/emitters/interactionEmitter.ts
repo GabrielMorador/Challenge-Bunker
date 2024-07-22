@@ -1,5 +1,6 @@
 import amqp, { Connection, Channel } from 'amqplib/callback_api';
 import { Interaction } from '../../interfaces/interactionInterface';
+import Logger from '../../logger/logger';
 
 const emitInteractionEvent = (interaction: Interaction): void => {
   amqp.connect(
@@ -20,7 +21,7 @@ const emitInteractionEvent = (interaction: Interaction): void => {
         });
         channel.sendToQueue(queue, Buffer.from(msg));
 
-        console.log(`Sent: ${msg}`);
+        Logger.log(`Sent: ${msg}`);
       });
 
       setTimeout(() => {

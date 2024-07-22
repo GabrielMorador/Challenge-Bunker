@@ -1,5 +1,6 @@
 import amqp, { Connection, Channel } from 'amqplib/callback_api';
 import { handleInteraction } from './handlers/interactionHandler';
+import Logger from '../logger/logger';
 
 export function connectRabbitMQ(): void {
   amqp.connect(
@@ -18,12 +19,12 @@ export function connectRabbitMQ(): void {
           durable: false,
         });
 
-        console.log(`Waiting for messages in ${queue}`);
+        Logger.log(`Waiting for messages in ${queue}`);
         channel.consume(
           queue,
           (msg) => {
             if (msg) {
-              console.log(`Received: ${msg.content.toString()}`);
+              Logger.log(`Received: ${msg.content.toString()}`);
               // proccess message
               handleInteraction(JSON.parse(msg.content.toString()));
             }
